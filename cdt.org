@@ -1,0 +1,551 @@
+* Day One
+** Writing software is about telling computers what to do. Why might this be challenging for humans to do effectively?
+- Language - we don't speak the same one
+- Short-term "working" memory (inability to hold all of a piece of code at the same time)
+- Prone to mistakes / inaccuracy
+- Ego - we tend to assume we don't make mistakes (or make a lot of them)
+- Long-term memory (what was I thinking six months ago?)
+- Not perfect logical reasoning machines (prone to logical mistakes), thinking clearly is hard
+- Need familiarity - hard to remember/understand unfamiliar things
+- We're sometimes inconsistent (especially in groups)
+- Prone to making typos/errors
+- Conclusions - we for a mental model about systems that we have only partial information on (and their internals)
+- Communication - sometimes write software that makes sense to us (primarily), doesn't communicate intent
+- Simplicity is subjective
+- We're slower than computers (to run logic)
+- Can't accumulate complex, inter-dependent program state (like computers)
+- Ego - we tend to think we're right (or wrong)
+- We remember/understand through patterns, not unconnected (or massively connected) data
+- need multiple attempts to write correct logic (make both reasoning errors and coding errors) 
+- writing code is slow (compared to the complexity of programs)
+- Things I haven't touched on:
+   * variable naming
+   * "visuals" (indentation, whitespace, conventions)
+   * software complexity accumulates
+   * debugging?
+   * using libraries (with well-defined interfaces and docs) because we don't want to build from scratch
+** What techniques, methods or language features would help mitigate these?
+- High-level languages (common language)
+- group instructions into larger tasks which make sense together (e.g. functions)
+- Create an easy way to "use" these larger tasks, as if they where part of the language (i.e. function interfaces)
+- Write the function interfaces in ways that are general that can be reused (but not so general they're not useful)
+- Avoid copies/duplication of information in different places (variable passing)
+- Name variables clearly
+- Follow sensible conventions: naming functions, naming variables, consistent indentation, meaningful names
+- Avoid repetition - loops, functions, generalising functions
+- High-level abstractions/language (functions)
+- Encapsulation
+- Continuously make sure the code is working
+- Keep track of all the work you've done (in a consistent state)
+** Using your imagination invent some tools (that may or may not exist) that would make development of software simpler, quicker and more productive. :SLIDES:
+- automated testing tools
+- version control
+- syntax highlighting
+- snippets
+- auto-completion
+- syntax checkers
+- auto-formatters / format or style checkers (indentation, naming, spaces, conventions)
+- context-aware refactoring tools
+- documentation searching
+- trello
+** Consider these pieces of code, what are the advantages and disadvantages of each?
+   Also maybe do one with a dict....!??? Print in large and also in small.
+*** Example
+#+begin_src python
+  import random
+  import matplotlib.pyplot as plt
+
+  n = 10**3
+
+  n_inside_circle = 0
+
+  # variables for circle
+  x_inside_circle = []
+  y_inside_circle = []
+  x_outside_circle = []
+  y_outside_circle = []
+
+  # variables for sphere
+  n_inside_sphere = 0
+
+  # compute number of points for circle
+  for i in range(n):
+      x = random.uniform(-1.0, 1.0)
+      y = random.uniform(-1.0, 1.0)
+      if x**2 + y**2 <= 1:
+          x_inside_circle.append(x)
+          y_inside_circle.append(y)
+          continue
+
+      x_outside_circle.append(x)
+      y_outside_circle.append(y)
+
+  # compute number inside sphere
+  for i in range(n):
+      x = random.uniform(-1.0, 1.0)
+      y = random.uniform(-1.0, 1.0)
+      z = random.uniform(-1.0, 1.0)
+      if x**2 + y**2 + z**2 <= 1:
+          n_inside_sphere += 1
+
+  # count variables for circle and sphere
+  n_inside_circle = len(x_inside_circle)
+
+  # compute pi for circle and sphere
+  pi_circle = 4 * (n_inside_circle / n)
+  pi_sphere = 6 * (n_inside_sphere / n)
+
+  # print results
+  print(f'using circle: {pi_circle}')
+  print(f'using sphere: {pi_sphere}')
+
+  fig, ax = plt.subplots()
+  ax.set_aspect('equal')
+  ax.scatter(x_inside_circle, y_inside_circle, color='g', marker='s')
+  ax.scatter(x_outside_circle, y_outside_circle, color='r', marker='s')
+  fig.show()
+#+end_src
+*** Example
+#+begin_src python
+  import random
+  import matplotlib.pyplot as plt
+
+
+  def do_iterations(method):
+      "Compute pi using the Monte Carlo method. The value of method can be the string 'circle' or 'sphere', which governs the method which is used."
+      global n_iter
+
+      x_outside_circle = []
+      x_inside_circle = []
+      y_inside_circle = []
+      y_outside_circle = []
+      n_inside_circle = 0
+
+      # loop for circle
+      for i in range(n_iter):
+          # Use the volume of a sphere is method is set to 'sphere'
+          if method == 'sphere':
+              x = random.uniform(-1.0, 1.0)
+              y = random.uniform(-1.0, 1.0)
+              z = random.uniform(-1.0, 1.0)
+
+              if x**2 + y**2 + z**2 <= 1:
+                  n_inside_circle += 1
+
+              continue
+
+          # Use the area of a circle is method is set to 'circle
+          x = random.uniform(-1.0, 1.0)
+          y = random.uniform(-1.0, 1.0)
+
+          if x**2 + y**2 <= 1:
+              n_inside_circle += 1
+              x_inside_circle.append(x)
+              y_inside_circle.append(y)
+              continue
+
+          x_outside_circle.append(x)
+          y_outside_circle.append(y)
+
+      if method == 'sphere':
+          return (n_inside_circle, [], [], [], [])
+      else:
+          return (n_inside_circle, x_inside_circle, y_inside_circle,
+                  x_outside_circle, y_outside_circle)
+
+
+  import sys
+
+  n_iter = input("Please type the number of iterations: ")
+  n_iter = int(n_iter)
+
+  # do circle iterations
+  n_inside_circle, x_inside_circle, y_inside_circle, x_outside_circle, y_outside_circle = do_iterations(
+      'circle')
+
+  # do sphere iterations
+  n_inside_sphere, x_inside_sphere, y_inside_sphere, x_outside_sphere, y_outside_sphere = do_iterations(
+      'sphere')
+
+  # compute pi for circle and sphere
+  pi_circle = 4 * n_inside_circle / n_iter
+  pi_sphere = 6 * (n_inside_sphere / n_iter)
+  print('using circle: ', pi_circle)
+  print('using sphere: ', pi_sphere)
+
+  fig, ax = plt.subplots()
+  ax.set_aspect('equal')
+  ax.scatter(x_inside_circle, y_inside_circle, color='g', marker='s')
+  ax.scatter(x_outside_circle, y_outside_circle, color='r', marker='s')
+  fig.show()
+#+end_src
+*** Example 1
+ #+begin_src python
+   import random
+   import matplotlib.pyplot as plt
+
+   n_iter = 10**3
+
+
+   def circle_iteration(x_inside_circle, y_inside_circle, z_inside_circle,
+                        x_outside_circle, y_outside_circle, z_outside_circle):
+
+       x = random.uniform(-1.0, 1.0)
+       y = random.uniform(-1.0, 1.0)
+
+       if x**2 + y**2 <= 1:
+           x_inside_circle.append(x)
+           y_inside_circle.append(y)
+           return 1
+       else:
+           x_outside_circle.append(x)
+           y_outside_circle.append(y)
+           return 0
+
+
+   def sphere_iteration(x_inside_sphere, y_inside_sphere, z_inside_sphere,
+                        x_outside_sphere, y_outside_sphere, z_outside_sphere):
+
+       x = random.uniform(-1.0, 1.0)
+       y = random.uniform(-1.0, 1.0)
+       z = random.uniform(-1.0, 1.0)
+
+       if x**2 + y**2 + z**2 <= 1:
+           x_inside_sphere.append(x)
+           y_inside_sphere.append(y)
+           z_inside_sphere.append(y)
+           return 1
+       else:
+           x_outside_sphere.append(x)
+           y_outside_sphere.append(y)
+           z_outside_sphere.append(y)
+           return 0
+
+
+   def do_iterations(values, method):
+       "Compute pi using the Monte Carlo method. The value of method can be the string 'circle' or 'sphere', which governs the method which is used."
+       n_inside_circle = 0
+       x_inside = []
+       y_inside = []
+       z_inside = []
+       x_outside = []
+       y_outside = []
+       z_outside = []
+
+       for i in range(n_iter):
+           n_inside_circle += method(x_inside, y_inside, z_inside, x_outside,
+                                     y_outside, z_outside)
+
+       return (n_inside_circle, x_inside, y_inside, z_inside, x_outside,
+               y_outside, z_outside)
+
+
+   def compute_pi_circle(n_total, n_inside):
+       return 4 * n_inside / n_total
+
+
+   def compute_pi_sphere(n_total, n_inside):
+       return 6 * n_inside / n_total
+
+
+   def plot_2D_results(results):
+       fig, ax = plt.subplots()
+       ax.set_aspect('equal')
+       ax.scatter(results[1], results[2], color='g', marker='s')
+       ax.scatter(results[4], results[5], color='r', marker='s')
+       fig.show()
+
+
+   n = 10**3
+
+   # do circle iterations
+   circle_results = do_iterations(range(n_iter), circle_iteration)
+
+   # do sphere iterations
+   sphere_results = do_iterations(range(n_iter), sphere_iteration)
+
+   # compute pi for circle and sphere
+   compute_pi_circle(circle_results[0], n_iter)
+   compute_pi_sphere(sphere_results[0], n_iter)
+
+   plot_2D_results(circle_results)
+ #+end_src
+*** Example 2
+ #+begin_src python
+   import random
+   import matplotlib.pyplot as plt
+   import numpy as np
+
+   n_iter = 10**3
+
+
+   def classify_points(points, radius):
+       in_out = np.sum(points ** 2, axis=1)
+       return in_out <= radius
+
+   n = 10**3
+
+   # do circle iterations
+   circle_points = np.random.random([ n, 2 ])
+   circle_inout = classify_points(circle_points, 1)
+
+   # do sphere iterations
+   sphere_points = np.random.random([ n, 3 ])
+   sphere_inout = classify_points(sphere_points, 1)
+
+   # compute pi for circle and sphere
+   pi_circle = 4 * sum(sphere_inout) / n
+   sphere_circle = 6 * sum(sphere_inout) / n
+
+   fig, ax = plt.subplots()
+   ax.set_aspect('equal')
+   in_points = circle_points[circle_inout, :]
+   out_points = circle_points[not circle_inout, :]
+
+   ax.scatter(in_points[1], in_points[2], color='g', marker='s')
+   ax.scatter(out_points[1], out_points[2], color='r', marker='s')
+   fig.show()
+
+ #+end_src
+*** Example
+ #+begin_src python
+   import random
+   import matplotlib.pyplot as plt
+
+
+   def circle_iteration(x_inside_circle, y_inside_circle, z_inside_circle,
+                        x_outside_circle, y_outside_circle, z_outside_circle):
+       x = random.uniform(-1.0, 1.0)
+       y = random.uniform(-1.0, 1.0)
+
+       if x**2 + y**2 <= 1:
+           n_inside = 1
+           x_inside_circle.append(x)
+           y_inside_circle.append(y)
+       else:
+           n_inside = 0
+           x_outside_circle.append(x)
+           y_outside_circle.append(y)
+
+       return n_inside
+
+
+   def sphere_iteration(x_inside_circle, y_inside_circle, z_inside_circle,
+                        x_outside_circle, y_outside_circle, z_outside_circle):
+       x = random.uniform(-1.0, 1.0)
+       y = random.uniform(-1.0, 1.0)
+       z = random.uniform(-1.0, 1.0)
+
+       if x**2 + y**2 + z**2 <= 1:
+           n_inside = 1
+           x_inside_circle.append(x)
+           y_inside_circle.append(y)
+           z_inside_circle.append(y)
+       else:
+           n_inside = 0
+           x_outside_circle.append(x)
+           y_outside_circle.append(y)
+
+       return n_inside
+
+
+   def do_iterations(values, method):
+       "Compute pi using the Monte Carlo method. The value of method can be the string 'circle' or 'sphere', which governs the method which is used."
+       # loop for circle
+       n_inside = 0
+       x_inside = []
+       y_inside = []
+       z_inside = []
+       x_outside = []
+       y_outside = []
+       z_outside = []
+
+       for i in range(n_iter):
+           n_inside += method(x_inside, y_inside, z_inside, x_outside, y_outside,
+                              z_outside)
+
+       return n_inside, x_inside, y_inside, z_inside, x_outside, y_outside, z_outside
+
+
+   def compute_pi_circle(n_inside, n_total):
+       return 4 * n_inside / n_total
+
+
+   def compute_pi_sphere(n_inside, n_total):
+       return 6 * n_inside / n_total
+
+
+   def plot_2D_results(results):
+       fig, ax = plt.subplots()
+       ax.set_aspect('equal')
+       ax.scatter(results[1], results[2], color='g', marker='s')
+       ax.scatter(results[4], results[5], color='r', marker='s')
+       fig.show()
+
+
+   n_iter = 10**3
+
+   # do circle iterations
+   circle_results = do_iterations(range(n_iter), circle_iteration)
+
+   # do sphere iterations
+   sphere_results = do_iterations(range(n_iter), sphere_iteration)
+
+   # compute pi for circle and sphere
+   pi_circle = compute_pi_circle(circle_results[0], n_iter)
+   pi_sphere = compute_pi_sphere(sphere_results[0], n_iter)
+
+   # plot the results for a circle
+   plot_2D_results(circle_results)
+
+   print(f'pi circle: {pi_circle}')
+   print(f'pi sphere: {pi_sphere}')
+   print(f'difference: {np.absolute(pi_circle - pi_sphere)}')
+ #+end_src
+*** Example
+    #+begin_src python
+      import random
+      import matplotlib.pyplot as plt
+
+      n_iter = 10**3
+
+
+      def plot_point_on_matplotlib_axis(ax, x, y, color):
+          if ax:
+              ax.scatter(x, y, color=color, marker='s')
+
+
+      def circle_iteration(ax=None):
+          x = random.uniform(-1.0, 1.0)
+          y = random.uniform(-1.0, 1.0)
+
+          if x**2 + y**2 <= 1:
+              plot_point_on_matplotlib_axis(ax, x, y, 'g')
+              return 1
+          else:
+              plot_point_on_matplotlib_axis(ax, x, y, 'r')
+              return 0
+
+          return n_inside
+
+
+      def sphere_iteration(ax=None):
+          x = random.uniform(-1.0, 1.0)
+          y = random.uniform(-1.0, 1.0)
+          z = random.uniform(-1.0, 1.0)
+
+          if x**2 + y**2 + z**2 <= 1:
+              plot_point_on_matplotlib_axis(ax, x, y, 'g')
+              return 1
+          else:
+              plot_point_on_matplotlib_axis(ax, x, y, 'g')
+              return 0
+
+
+      fig, ax = plt.subplots()
+      ax.set_aspect('equal')
+
+      # do circle iterations
+      n_inside_circle = 0
+      n_inside_sphere = 0
+
+      for i in range(n_iter):
+          n_inside_circle += circle_iteration(ax)
+          n_inside_sphere += sphere_iteration()
+
+      # compute pi for circle and sphere
+      pi_circle = 4 * n_inside_circle / n_iter
+      pi_sphere = 6 * n_inside_sphere / n_iter
+
+      print(f'pi circle: {pi_circle}')
+      print(f'pi sphere: {pi_sphere}')
+
+      fig.show()
+    #+end_src
+* Day Two
+** Code challenge intro :SLIDES:
+*** The scenario
+ - You are the small software house specialising in machine learning
+ - You've been hired by an (imaginary) oil shipping company
+ - They have asked you to deliver some software to automate their business decisions
+ - You will meet with them periodically to report progress
+ - During the meetings the requirements will change or evolve from the initial request, sometimes based on your findings, sometimes based on changes to business needs
+*** Your job
+ - Manage the relationship
+  * run the meetings with client
+  * agree realistic deliverables
+  * keep minutes
+ - Manage internal process
+  * have an internal schedule of meetings
+  * have good communication within the team
+  * ensure you're working as a team and delivering the prodouct
+ - Report to the customer on your progress
+ - Deliver a software product
+*** You should expect that
+ - The problem will not be completely specified in advance. The requirements will evolve (and sometimes change) over time, as the needs of the company change and evolve
+ - The customer will not be a domain expert
+ - You'll need to work on different tasks in parallel
+*** The problem
+... need a detailed problem specification here (i.e. what is their first task). Also, maybe a contact email address for them to ask questions....?????
+** What challenges do you anticipate delivering this software in a team, and responding to customer needs?
+- We need to get on with others
+- conflicting views on what is "good"
+- predicting the future is hard!
+- Different understanding of the problem
+- the requirements can change abruptly
+- communication: the customer can misunderstand the requirement
+- communication: you can misunderstand each other
+- coordination/parallelisation/working on the same thing
+- enthusiasm (?) - I'm working on something I don't want to be
+- breaking brittle code
+- information (about what others are doing)
+- wastage/redundancy in task repetition
+- task pre-reqs
+- responding to requirement
+- different ideas on the end goal
+- pieces of code which are not compatible
+- work happening in parallel could change the same parts of the code
+- misunderstanding requirements
+- Subjectivity (e.g. code quality, development practices, style)
+- People can be easy to offended/alienate
+** Can you imagine some ways of working that might resolve these issues? discuss this in your group, and write a series of short bullet points describing the process you would use.
+** The proposed methodology :SLIDES:
+  - Setup
+    * Sign up for a free trello account
+    * Sign up for a free slack account
+    * Create a trello board with columns waiting, active, review, completed.
+    * Create a slack channel called #standup
+  - Development will happen in blocks of two weeks, which we'll refer to as a "sprint"
+  - 1) You'll meet with the customer at the start of the sprint
+  - 2) Immediately after the sprint, you'll hold a sprint planning meeting. You'll have some support to do this initially.
+    * Write a list of tasks
+    * Discuss the tasks (ensure that they're well-defined) and estimate their "complexity"
+    * Choose the tasks to perform between now and the next planning meeting
+    * Don't choose who will do them
+    * Add the tasks into trello as "waiting"
+  - 3) As a team, work on the agreed targets.
+    * Choose a task
+    * Assign yourself to the task by adding your name before the task title
+    * Move the task to the "active" column
+    * Complete the task
+    * Move the task to the "review" column
+    * Ask on slack for someone to code review your changes
+    * Choose your next task
+  - 4) Once you've finished a task, as someone to code review it
+    * The aim is to make the code better
+    * Be honest, and discuss the suggestions openly
+    * Be ready to admit a better way of doing things
+    * Avoid taking changes personally
+    * You don't have to implement suggestions!
+  - 5) You'll hold a "daily" standup (we recommend twice a week, at a specified time initially)
+    * On a specific slack channel you'll write/record you'll answer the questions:
+     - What have I done since last standup?
+     - What do I expect to do before next standup?
+     - What problems/issues do I expect?
+     - This may encourage some conversation, but be careful not to confuse the main standup thread with conversation
+  - 6) Use version control to manage your development
+    * Develop in a specific branch
+    * Merge your work into master branch once you've finished a task
+  - 7) You'll have access to a technical consultant?
+  - 8) Towards the end of the sprint, you'll meet your "boss", who will approve the solution before you meet the customer
+  - 9) You'll end the sprint (and start the next) by meeting with the customer to report on progress and agree a new set of targets for the next meeting.

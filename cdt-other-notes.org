@@ -1,0 +1,186 @@
+* email to Gert
+Hi All,
+
+Apologies in advance for the long email. We had a very productive meeting at the RSE conference yesterday knocking our heads together around the coding challenge. We think we've made good progress. Myself and Ed are back in Swansea on Friday if anyone would like to meet. A big thanks goes to Colin for his input.
+
+One of the ways we think we can (in a simple way) dramatically change a simple ML problem to a problem with software engineering relevance and challenges is by introducing some unpredictable changing of requirements over time. In particular, the motivation for modern development practices are very much driven by accounting for requirements that can change unexpectedly. It means that they need processes that are capable of responding to change, and need to write code in ways that can be refactored quickly and easily. Also, we think our plan will give us all (as the ones running the challenge) most flexibility to respond to how the students are doing and adapt the challenge as we see how they perform. I think it's fair for me to say that this will be a much better preparation for them than one fixed problem. The downside, is that the plans we have will require more time investment or support/time from us (the staff) than the more static approach, but I've no doubt it'll be a much, much better experience for both students and industrial partners.
+
+We discussed at great length how we can sensibly motivate this change, in a way that they will engage with. Our best idea is to give them a scenario in which they play the role of an ongoing machine learning business consultancy, in which (supposedly) the customer knows nothing about ML and gives them a broad and open, real-world problem to solve best they can. Someone will take the role of the customer that they're consulting.
+
+ We thought of a few problems and looked for datasets. The scenario we like is that they are consultants to an oil shipping company. The oil company has a fixed (small) number of tankers, the tankers travel to and from a port. The data is available online for the price of oil in the UK and the price they can buy oil for. They need to write software to decide when to move the oil to the UK and when to wait with the tankers off-shore for oil prices to change (in different countries). Obviously to some extent a toy problem, but gives them a starting point. We'll give them a basic framework (which moves the tankers etc) to code against. The idea is to continuously make this problem more complex as time goes on.
+ 
+Additional challenges would be things such as:
+- adding multiple ports
+- explore different machine learning methods
+- produce output data in a specific formats
+- changing the overhead of buying oil
+- add a catalogue of tankers that they can buy
+- changes of taxes for
+- allow buying of oil up-front
+- run software on specific systems
+
+A very big part of the idea is that they need to significantly and often adapt the software to slightly different problems.
+
+There are a really large number of other options. The nice thing is that we can completely calibrate the difficulty of the next step, based on how well they've done in the current step.
+ Eventually (ideally) they should produce an automated script that will makes the decisions such as "move of not move the tanker" based on the current prices of oil etc at a given "timestep" in time. We won't tell them which machine learning method to use (initially). We could potentially give a prize/award/recognition/token mention to the team that has the best performing software at the end (in terms of the oil company profit based on software predictions). They would eventually produce an automated solution.
+
+We propose the following regular structure of meetings:
+
+1) Someone (either one of us or some other researchers) will meet them in the role of the "customer". This will be their initial requirements meeting. They'll actively participate in setting their goals, and "consulting" the customer (who knows in the scenario nothing about machine learning) on ways that they could help. Immediately after this meeting, they'll have a feedback meeting (15 mins?), with a chance to make sure they're on the right path, give them some feedback on their interactions with the client, and make sure they understand requirements.
+2) The teams go off and do some work.
+3) We meet the customer (as RSEs and their "technical consultants"), to look at their progress and give them technical advice. We review their progress, and this also allows us to calibrate the next task to how well their doing
+4) They have an update meeting with the customer. They advise them on their conclusions, show their progress, and agree with the customer the next phase. This could be an incremental change ("let's try this with a larger data") or a change of requirements ("We've our quarterly shareholder report next month, the marketing need some plots in our house plot format"). It could be multiple requirement changes, but we can calibrate this as we go along based on the meeting we had in point 2 (that's the point of meeting them in point 2).
+5) We go back to point 2, and keep iterating 2 and 3 until the end of the course
+6) Finally, we asses their performance by quantifying the impact they've been able to have on the business activities (i.e profit). I expect there'll be some kind of wrap-up session where the results are presented/compared (?)
+
+A good question might be "who will be the customer" (it could be an RSE, or any member of staff really who need not know anything about machine learning, or it could just be an email address that sends them requirements). This is still an open question. Also, we have the question of how frequently we should meet with them (one interesting option could be to allow them to manage this themselves and to choose their meeting frequency!). Also we need to iron out admin detail such as splitting into groups and who will supervise etc.
+
+Changing requirements mean they need good software design processes to respond effectively to change (we will need to brief them on how to do this) and they'll need to write software that is sufficiently adaptable to respond to changes that they can't predict. It also means that we can respond to their progress.
+* Other Notes
+-----
+- Make this code as horrible as possible -> then show a few rewritten examples
+- Compare same rewritten versions as in the last section, but this first without any of the function content
+- Compare these rewritten versions, what is g
+
+=====================================================================================================================================================================
+git (avoid multiple copies)
+central master
+branches....!?
+issue trackers
+slack
+agile - using trello (...?)
+style checking
+linting/standardisation
+composability
+travis/CI
+automated testing
+modular design
+quick iterations/feedback
+handling failures (fail fast)
+small/minimal test cases
+diagramming for design
+methodologies for design (use case etc)
+test-driven design (e.g. BDD)
+open/closed design
+"scientific" method for debugging?
+naming (in scope/namespace) - files, variables, functions/methods, classes, data labelling etc -> avoid single letter names
+code reviews
+conventions -> camelcase vs underscores, variables vs functions vs methods (e.g. get/set) vs classes. Class conventions, constants. Positioning of braces/brackets
+indentation and spacing, making code pretty (anything in PEP8)
+yapf
+functions to help understand meaning - construct a higher-level language. Beauty == good spacing, convey meaning in structure
+Keep It Simple, Stupid - KISS
+DRY - don't copy and paste
+magic numbers (or strings, identifiers etc)
+premature optimisation -> code for simplicity first, for performance second
+coupling
+too much nesting is bad
+work -> beautiful -> fast (beautiful -- naming, right interfaces, testable, understandable)
+best code is code that doesn't exist (or something like that)
+consistent, organized, modular, well-named, and yes, properly formatted
+requirements? define scope...? what do we recommend here? e.g. what does the end result look like, what should interfaces look like, 
+learn your editor?
+assume you're fallible.
+data + algorithms = programs
+what is an editor, what is an IDE...?
+What is a command line
+advantages/disadvantages of dynamic typing (in terms of needing testing)
+mutations + bugs
+procedural/OOP/func/declarative
+powerful vs domain specific
+"If your only tool is a hammer, all your problems will look like nails"
+design around data? design around algorithms? thinking about transformations to data
+software configuration management + reproducible environments
+profiling
+build + deploy
+find libraries solving more abstract problems
+encode requirement in tests
+documenting
+code by imagination
+naming commits
+reproducible research
+=====================================================================================================================================================================
+proactive monitoring....?
+=====================================================================================================================================================================
+- Design for collaboration and expanability (modular, divisible into parts, interfaces, abstractions?, ...)
+- Comminucation
+- Management (agile, communication, ...!)
+- Code management (git, issue trackers, not-communication, avoid multiple copies, style checks, travis/CI, automated testing)
+
+7502 -> 32 process/64 core node
+
+
+==> Introduce the challenge...!?
+
+3-5 pm on Wednesday
+2 - 
+
+2hrs Weds =>
+  - intro to coding challenge 0.5 hr
+0.5 + 1 hr
+
+
+
+11:10 -> 12.24 room bookings
+** Even more notes
+   
+   Calculate pi and work out the diameter, radius, area, surface area and volume of a sphere.
+   MONTE CARLO CODE:
+1) know all the things beforehand
+2) somehow maintain the state inside a function (or some object?)
+3) accumulate the result as we go along
+4) everything in the same function
+5) function to compute pi (i.e. for a single iteration)
+6) function inc all iterations
+7) bad parametrisation (so difficult to change num iterations)
+8) maintain a list of outside values a list of inside values, find max inside
+9) do it all by throwing exceptions....!!!
+10) do it with an if and a return (with no else)
+11) generate the random number outside the function, or inside, outside the loop or inside
+12) do the experiment 10 times?
+-----
+EXAMPLE 1:
+n=1e3
+x = 1-2*np.random.random(int(n))
+y = 1-2.*np.random.random(int(n))
+insideX,  insideY  = x[(x*x+y*y)<=1],y[(x*x+y*y)<=1]
+outsideX, outsideY = x[(x*x+y*y)>1],y[(x*x+y*y)>1]
+-----
+EXAMPLE 2:
+n = 1000
+xy = np.random.uniform(-1, 1, 2 * n).reshape((2, n))
+in_marker = xy[0]**2 + xy[1]**2 <= 1
+pi = np.sum(in_marker) / n * 4
+in_xy = xy[:, in_marker]
+out_xy = xy[:, ~in_marker]
+-----
+EXAMPLE 3:
+
+------
+EXAMPLE 4:
+from random import *
+from math import sqrt
+inside=0
+n=10**6
+for i in range(0,n):
+    x=random()
+    y=random()
+    if sqrt(x*x+y*y)<=1:
+        inside+=1
+pi=4*inside/n
+print (pi)
+
+slack
+issue trackers
+agile (trello)
+
+=====================================================================================================================================================================
+
+* Other considerations
+- Would be nice to actually DO some collabouration (e.g. on trello)
+- At the end we look at the flip charts?
+- Maybe for collaborative working we can just present?
+- do you want to swap tables? Good/bad idea?
+- A1 printouts and some flip charts/a wall?
+
+  
