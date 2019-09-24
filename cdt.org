@@ -39,19 +39,18 @@
 - Continuously make sure the code is working
 - Keep track of all the work you've done (in a consistent state)
 ** Using your imagination invent some tools (that may or may not exist) that would make development of software simpler, quicker and more productive. :SLIDES:
-- automated testing tools
-- version control
+- automated testing tools <--
 - syntax highlighting
-- snippets
-- auto-completion
+- auto-completion (+snippets)
 - syntax checkers
 - auto-formatters / format or style checkers (indentation, naming, spaces, conventions)
 - context-aware refactoring tools
 - documentation searching
+- version control
 - trello
 ** Consider these pieces of code, what are the advantages and disadvantages of each?
 *** Example
-    No functions, but it's easy(ish) to understand! Use of continue that makes things confusing. Lots of variables that only really make sense "together" (x_inside etc).
+No functions, but it's easy(ish) to understand! Use of continue that makes things confusing. Lots of variables that only really make sense "together" (x_inside etc).
 #+begin_src python
   import random
   import matplotlib.pyplot as plt
@@ -107,7 +106,7 @@
   fig.show()
 #+end_src
 *** Example
-    data abstraction, but one that isn't very "global"
+data abstraction, but one that isn't very "global"
 doubling up using method (this is never used)
 X is a weird abstraction
 n_iter makes testing hard
@@ -386,25 +385,27 @@ setup -> generate all data to test
 *** The scenario
  - You are the small software house specialising in machine learning
  - You've been hired by an (imaginary) oil shipping company
- - They have asked you to deliver some software to automate their business decisions
+ - They wish to investigate automation of business decisions with machine learning
  - You will meet with them periodically to report progress
- - During the meetings the requirements will change or evolve from the initial request, sometimes based on your findings, sometimes based on changes to business needs
+ - Following the meeting, you will get an email with updated requirements
 *** Your job
  - Manage the relationship
-  * run the meetings with client
+  * conduct meetings with the client
   * agree realistic deliverables
-  * keep minutes
+  * keep minutes of meetings
  - Manage internal process
-  * have an internal schedule of meetings
-  * have good communication within the team
-  * ensure you're working as a team and delivering the prodouct
- - Report to the customer on your progress
+  * have an internal schedule of team meetings
+  * manage tasks within the team effectively
+  * collaborate on software
+ - Report to the customer on progress
  - Deliver a software product
 *** You should expect that
- - The problem will not be completely specified in advance. The requirements will evolve (and sometimes change) over time, as the needs of the company change and evolve
+ - The problem will not be completely specified in advance.
+ The requirements will evolve (and sometimes change) over time, as the needs of the company change and evolve
  - The customer will not be a domain expert
  - You'll need to work on different tasks in parallel
-*** The problem
+*** The first problem
+- The 
 ... need a detailed problem specification here (i.e. what is their first task). Also, maybe a contact email address for them to ask questions....?????
 ** What challenges do you anticipate delivering this software in a team, and responding to customer needs?
 - We need to get on with others
