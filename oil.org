@@ -1,0 +1,74 @@
+* Charter costs:
+Recent time charter equivalent rates, per day
+https://en.wikipedia.org/wiki/Oil_tanker#Recent_markets
+| Ship size            | Cargo                                                         | Route                                                      | 2004    | 2005    | 2006    | 2010[53] | 2012[53] | 2014[53] | 2015[53] |
+| VLCC                 | Crude                                                         | Persian Gulf–Japan[54]                                     | $95,250 | $59,070 | $51,550 | $38,000  | $20,000  | $28,000  | $57,000  |
+| Suezmax              | Crude                                                         | West Africa – Caribbean or East Coast of North America[55] | $64,800 | $47,500 | $46,000 | $31,000  | $18,000  | $28,000  | $46,000  |
+| Aframax              | Crude                                                         | Cross-Mediterranean[56]                                    | $43,915 | $39,000 | $31,750 | $20,000  | $15,000  | $25,000  | $37,000  |
+| All product carriers | Caribbean – East Coast of North America or Gulf of Mexico[56] | $24,550                                                    | $25,240 | $21,400 | $11,000 | $11,000  | $12,000  | $21,000  |          |
+
+* Buying prices
+  https://en.wikipedia.org/wiki/Oil_tanker
+| Size            | 1985 | 2005   |       |
+| 32,000–45,000   | DWT  | US$18M | $43M  |
+| 80,000–105,000  | DWT  | $22M   | $58M  |
+| 250,000–280,000 | DWT  | $47M   | $120M |
+* Operational
+https://en.wikipedia.org/wiki/Oil_tanker
+"The cost of operating the largest tankers, the Very Large Crude Carriers, is currently between $10,000 and $12,000 per day"
+* West Texas intermediate
+West Texas intermediate, also known as Texas light sweet, is a grade of crude oil used as a benchmark in oil pricing. This grade is described as light crude oil because of its relatively low density, and sweet because of its low sulfur content. Wikipedia
+* Oil tanker capacity
+
+Oil tanker capacity is estimated based on their convey limit in dead weight (DWT), which is the total weight of a ship (including the load, crew, provisions, etc.) excluding the weight of the ship if unloaded.
+
+Oil tanker capacities based on deadweight are as follows:
+
+** Panamax
+
+With an oil tanker size of 500,000 barrels, these tankers sure command a measure of respect in this industry. They are regarded as the largest vessel that travels through the Panama Canal.
+
+A crude oil tanker of this sort weighs up to 70,000 dead weight tons (a crude oil tanker is one of the two types of oil tankers that move raw unrefined oil from where it is pumped out of the earth to where they will be refined).
+
+** Aframax
+
+Their weight ranges from 70,000 to 120,000 dead weight tons, with a capacity of 750,000 barrels of oil. In the Average Freight Rate Assessment tanker system (AFRA), they are the largest tankers. AFRA is a standard used for contract terms with well-defined ship capacity tanker explosion.
+
+** Suezmax
+
+This is the largest tanker passing the Suez Canal with the range of deadweight tons from 120,000 to 200,000 and 1,000,000 barrels of oil.
+
+Very large crude carrier (VLCC)
+
+Their weight extends from 200,000 to 325,000 dead weight tons; used mainly in the Mediterranean Sea, the North Sea, and near West Africa, with an approximate capacity of 2,000,000 barrels of oil.
+
+** Ultra large crude carrier (ULCC)
+
+It is also known as ULCC. The weight extends from 325,000 to 550,000 dead weight tons. Their capacity is up to 4,000,000 barrels of oil and they are used in the Persian Gulf to European and American to Asia.
+DWT is the sum of the weights of cargo, fuel, fresh water, ballast water, provisions, passengers, and crew.[1]
+* "Typical" fluctuation
+  https://oilprice.com/oil-price-charts
+** 1 day ~ 0.8%
+** 1 wk ~ $2 (ish) in $58 - 3.5% - 3.5%
+   
+* Oil price today:
+  
+https://markets.businessinsider.com/commodities/oil-price/usd?type=wti  (bottom of page)
+
+Unit conversion for Oil (WTI) Price Today
+Conversion 	Oil (WTI) Price
+| 1 Barrel ≈ 158,98 Liters             | Oil (WTI) Price Per 1 Liter  | 0.37 USD   |
+| 1 Barrel = 336 Pint                  | Oil (WTI) Price Per 1 Pint   | 0.17 USD   |
+| 1 Barrel = 42 Gallons                | Oil (WTI) Price Per 1 Gallon | 1.39 USD   |
+| 1 Barrel ≈ 0,136 Tonnes of Crude Oil | Oil (WTI) Price Per 1 Ton    | 429.63 USD |
+
+So, price per barrel should be: 0.37 * 158.98 = $ 58.822 / barrel
+
+So, an Aframax tanker would carry 750,000 * $58.822 = $44,116,950 <===
+Panamax would be $29,411,000
+
+Fluctuation of oil price in a day, roughly (around 1% lets say) = $300,000 fluctuation
+
+Running costs are: charter (21k/day) +  10k/day (very large crude tanker) ~ 30k/day <===
+
+running costs are then 10% of a typical fluctuation
