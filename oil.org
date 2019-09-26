@@ -1,3 +1,19 @@
+* Problem statement
+** You're an AI consultant for an energy company
+** Sometimes they make their tankers wait for favourable oil prices before docking
+** Each day the tanker captain will run your system to decide if it is more profitable to dock and sell oil today or wait until tomorrow
+** The current fleet of tankers each carries 750,000 barrels of West Texas Intermediate (WTI) oil
+** Typical value is around $58 per barrel
+** Tanker running costs are approximately $30k/day
+** The oil can be sold at the value given by the commodities market, daily oil price fluctuations can be found online
+
+** Questions/clarifications???
+
+* Useful links
+report on oil : https://www.euronav.com/media/65361/special-report-2017-eng.pdf
+oil prices:
+https://oilprice.com/oil-price-charts
+https://markets.businessinsider.com/commodities/oil-price/usd?type=wti
 * Charter costs:
 Recent time charter equivalent rates, per day
 https://en.wikipedia.org/wiki/Oil_tanker#Recent_markets
